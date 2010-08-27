@@ -3,7 +3,7 @@ Snake Wallpaper
 
 An Android live wallpaper which emulates the classic apple-eating snake game around your launcher icons.
 
-Market link: http://tinyurl.com/33tqkot or search "Snake Wallpaper"
+Market link: [tinyurl.com/33tqkot](http://tinyurl.com/33tqkot) or search "Snake Wallpaper"
 
 
 Screenshots
