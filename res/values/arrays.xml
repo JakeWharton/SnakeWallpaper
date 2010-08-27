@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+	<string-array name="fps">
+		<item>30 FPS</item>
+		<item>20 FPS</item>
+		<item>15 FPS</item>
+		<item>12 FPS</item>
+		<item>10 FPS</item>
+	</string-array>
+	<string-array name="fps_values">
+		<item>30</item>
+		<item>20</item>
+		<item>15</item>
+		<item>12</item>
+		<item>10</item>
+	</string-array>
+</resources>

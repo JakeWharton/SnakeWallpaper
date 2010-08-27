@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <string name="title">Snake Wallpaper</string>
+    <string name="author">Jake Wharton</string>
+    <string name="description">Play the classic apple-eating game of snake around your icons.</string>
+    <string name="version_name">1.0.0</string>
+    <string name="version_code_key">version</string>
+    
+    <string name="welcome_firstrun">Thanks for installing!\n\nWould you like to read the instructions?</string>
+    <string name="welcome_upgrade">Thanks for upgrading!\n\nWould you like to read the change log?</string>
+    <string name="welcome_picker_toast">Choose \"Snake Wallpaper\" from the list.</string>
+    
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    
+    <string name="gameover">GAME OVER</string>
+    
+    <string name="display_widgetlocations_default"/>
+    <string name="widgetlocations_howto">Draw rectangles to indicate widget positions. Long press to delete.</string>
+    
+    <string name="reset_game">Are you sure you want to reset all game-related settings?</string>
+    <string name="reset_game_toast">All game-related settings reset.</string>
+    <string name="reset_display">Are you sure you want to reset all display-related settings?</string>
+    <string name="reset_display_toast">All display-related settings reset.</string>
+    <string name="reset_color">Are you sure you want to reset all color-related settings?</string>
+    <string name="reset_color_toast">All color-related settings reset.</string>
+    <string name="reset_all">Are you sure you want to reset all settings?</string>
+    <string name="reset_all_toast">All settings reset.</string>
+    
+    <string name="settings_key">settings</string>
+    <string name="settings_header">Settings</string>
+    <string name="settings_display">Display and Game</string>
+    <string name="settings_display_key">display_and_game</string>
+    <string name="settings_display_summary">Layout, offsets, FPS...</string>
+    <string name="settings_color">Colors and Background</string>
+    <string name="settings_color_key">colors</string>
+    <string name="settings_color_summary">Background, snake, apple...</string>
+    <string name="settings_reset">Reset</string>
+    <string name="settings_reset_key">reset</string>
+    
+    <string name="settings_game_usercontrol">User Control</string>
+    <string name="settings_game_usercontrol_key">game_usercontrol</string>
+    <string name="settings_game_usercontrol_summary">Allow touches on the screen to influence the snake\'s direction</string>
+    <string name="settings_display_fps">FPS</string>
+    <string name="settings_display_fps_key">display_fps</string>
+    <string name="settings_display_fps_summary">Number of times per second to advance the game</string>
+    <string name="settings_display_layout">Layout</string>
+    <string name="settings_display_showwalls">Show Walls</string>
+    <string name="settings_display_showwalls_key">display_showwalls</string>
+    <string name="settings_display_showwalls_summary">Draw walls around the icons</string>
+    <string name="settings_display_iconrows">Icon Rows</string>
+    <string name="settings_display_iconrows_key">display_iconrows</string>
+    <string name="settings_display_iconrows_summary">Number of icon rows on your home screen</string>
+    <string name="settings_display_iconcols">Icon Columns</string>
+    <string name="settings_display_iconcols_key">display_iconcols</string>
+    <string name="settings_display_iconcols_summary">Number of icon columns on your home screen</string>
+    <string name="settings_display_rowspacing">Icon Row Cell Spacing</string>
+    <string name="settings_display_rowspacing_key">display_rowspacing</string>
+    <string name="settings_display_rowspacing_summary">Number of cells in an icon row</string>
+    <string name="settings_display_colspacing">Icon Column Cell Spacing</string>
+    <string name="settings_display_colspacing_key">display_colspacing</string>
+    <string name="settings_display_colspacing_summary">Number of cells in an icon column</string>
+    <string name="settings_display_widgetlocations">Widget Locations</string>
+    <string name="settings_display_widgetlocations_key">display_widgetlocations</string>
+    <string name="settings_display_widgetlocations_summary">Specify widget locations for optimal board layout</string>
+    <string name="settings_display_padding">Grid Padding</string>
+    <string name="settings_display_padding_key">display_padding</string>
+    <string name="settings_display_padding_summary">Padding offsets on the four edges of the grid</string>
+    <string name="settings_display_padding_top">Top</string>
+    <string name="settings_display_padding_top_key">display_padding_top</string>
+    <string name="settings_display_padding_top_summary"></string>
+    <string name="settings_display_padding_bottom">Bottom</string>
+    <string name="settings_display_padding_bottom_key">display_padding_bottom</string>
+    <string name="settings_display_padding_bottom_summary"></string>
+    <string name="settings_display_padding_left">Left</string>
+    <string name="settings_display_padding_left_key">display_padding_left</string>
+    <string name="settings_display_padding_left_summary"></string>
+    <string name="settings_display_padding_right">Right</string>
+    <string name="settings_display_padding_right_key">display_padding_right</string>
+    <string name="settings_display_padding_right_summary"></string>
+    <string name="settings_display_reset">Reset Display Settings</string>
+    <string name="settings_display_reset_key">display_reset</string>
+    <string name="settings_display_reset_summary">All display settings back to default</string>
+    
+    <string name="settings_color_background_header">Background</string>
+    <string name="settings_color_background">Background Color</string>
+    <string name="settings_color_background_key">color_game_background</string>
+    <string name="settings_color_background_summary"></string>
+    <string name="settings_color_walls">Wall Color</string>
+    <string name="settings_color_walls_key">color_game_walls</string>
+    <string name="settings_color_walls_summary"></string>
+    <string name="settings_color_bgimage">Background Image</string>
+    <string name="settings_color_bgimage_key">color_game_bgimage</string>
+    <string name="settings_color_bgimage_toast">Background image successfully set.</string>
+    <string name="settings_color_bgimage_summary">Image to display as opposed to a solid color</string>
+    <string name="settings_color_bgopacity">Background Opacity</string>
+    <string name="settings_color_bgopacity_key">color_game_bgopacity</string>
+    <string name="settings_color_bgopacity_summary">The level of opacity of the background image</string>
+    <string name="settings_color_bgimageclear">Clear Background Image</string>
+    <string name="settings_color_bgimageclear_key">color_game_bgimage_clear</string>
+    <string name="settings_color_bgimageclear_toast">Background image cleared.</string>
+    <string name="settings_color_bgimageclear_summary"></string>
+    <string name="settings_color_snake">Snake</string>
+    <string name="settings_color_snake_key">color_snake</string>
+    <string name="settings_color_snake_summary"></string>
+    <string name="settings_color_apple">Apples</string>
+    <string name="settings_color_apple_key">color_apple</string>
+    <string name="settings_color_apple_summary"></string>
+    <string name="settings_color_reset">Reset Color Settings</string>
+    <string name="settings_color_reset_key">color_reset</string>
+    <string name="settings_color_reset_summary">All color settings back to default</string>
+    
+    <string name="about">About</string>
+    <string name="about_key">about</string>
+    <string name="about_summary">Instructions, change log, credits...</string>
+    <string name="about_header_key">about_header</string>
+    <string name="about_header_summary">An Android live wallpaper which simulates the classic apple-eating game of snake.</string>
+    <string name="about_contents">Contents</string>
+    <string name="instructions">Instructions</string>
+    <string name="instructions_key">instructions</string>
+    <string name="instructions_title">Snake Wallpaper Instructions</string>
+    <string name="instructions_summary">Simple overview of usage</string>
+    <string name="changelog">Change Log</string>
+    <string name="changelog_key">changelog</string>
+    <string name="changelog_title">Snake Wallpaper Change Log</string>
+    <string name="changelog_summary">Summary of differences between versions</string>
+    <string name="credits">Credits</string>
+    <string name="credits_key">credits</string>
+    <string name="credits_title">Snake Wallpaper Credits</string>
+    <string name="credits_summary">Additional attribution</string>
+    <string name="todo">To Do / Requests</string>
+    <string name="todo_key">todo</string>
+    <string name="todo_title"> Snake Wallpaper To Do and Requests</string>
+    <string name="todo_summary">List of features pending implementation</string>
+    
+    <string name="about_aroundtheweb_header">Around The Web</string>
+    <string name="github">GitHub Project</string>
+    <string name="github_key">github</string>
+    <string name="github_href">http://github.com/JakeWharton/SnakeWallpaper/</string>
+    <string name="github_summary">We are open source! Fork and contribute code.</string>
+    <string name="xda">XDA Developers</string>
+    <string name="xda_key">xda</string>
+    <string name="xda_href">http://forum.xda-developers.com/showthread.php?t=741957</string>
+    <string name="xda_summary">Official thread of development information</string>
+    
+    <string name="information_header">Information</string>
+    <string name="information_version">Version</string>
+    <string name="information_version_key">information_version</string>
+    <string name="information_author">Author</string>
+    <string name="information_author_key">information_author</string>
+    
+    <string name="information_contact">Contact</string>
+    <string name="information_contact_email">E-Mail</string>
+    <string name="information_contact_email_key">information_contact_email</string>
+    <string name="information_contact_email_summary">JakeWharton@GMail.com</string>
+    <string name="information_contact_email_data">jakewharton@gmail.com</string>
+    <string name="information_contact_twitter">Twitter</string>
+    <string name="information_contact_twitter_key">information_contact_twitter</string>
+    <string name="information_contact_twitter_summary">\@JakeWharton</string>
+    <string name="information_contact_twitter_data">http://twitter.com/JakeWharton</string>
+    <string name="information_contact_website">Website</string>
+    <string name="information_contact_website_key">information_contact_website</string>
+    <string name="information_contact_website_summary">http://jakewharton.com</string>
+    <string name="information_contact_website_data">http://jakewharton.com</string>
+    <string name="information_market">Other Applications</string>
+    <string name="information_market_view">Like This Wallpaper?</string>
+    <string name="information_market_view_key">information_market_view</string>
+    <string name="information_market_view_summary">Click here to view my other applications on the Android Market</string>
+    <string name="information_market_view_data">market://search?q=pub:%22Jake%20Wharton%22</string>
+    
+    <string name="menu_reset">Reset All</string>
+</resources>
