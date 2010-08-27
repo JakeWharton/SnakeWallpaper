@@ -202,10 +202,10 @@
 					android:key="@string/github_key"
 					android:title="@string/github"
 					android:summary="@string/github_summary"/>
-				<!-- Preference
+				<Preference
 					android:key="@string/xda_key"
 					android:title="@string/xda"
-					android:summary="@string/xda_summary"/-->
+					android:summary="@string/xda_summary"/>
 			</PreferenceCategory>
 		</PreferenceScreen>
 		<PreferenceScreen
