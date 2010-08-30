@@ -15,7 +15,7 @@ Screenshots
 
 **Follow me on [Twitter](http://twitter.com/JakeWharton/) for updates.**
 
-Please report all bugs to <jakewharton@gmail.com> rather than rating negatively in the app comments. I'll try to keep up with any bugs posted here as well. Enjoy!
+Please report all bugs to <jakewharton@gmail.com> or as GitHub issues rather than rating negatively in the app comments. Enjoy!
 
 [![Click to download](http://chart.apis.google.com/chart?cht=qr&chs=200x200&chl=market://search%3Fq%3Dpname:com.jakewharton.snakewallpaper)](http://tinyurl.com/33tqkot)
 
