@@ -145,16 +145,19 @@
 					android:title="@string/settings_color_bgimageclear"
 					android:summary="@string/settings_color_bgimageclear_summary"/>
 			</PreferenceCategory>
-			<com.jakewharton.utilities.ColorPreference
-				android:key="@string/settings_color_snake_key"
-				android:title="@string/settings_color_snake"
-				android:summary="@string/settings_color_snake_summary"
-				android:defaultValue="@integer/color_snake_default"/>
-			<com.jakewharton.utilities.ColorPreference
-				android:key="@string/settings_color_apple_key"
-				android:title="@string/settings_color_apple"
-				android:summary="@string/settings_color_apple_summary"
-				android:defaultValue="@integer/color_apple_default"/>
+			<PreferenceCategory
+				android:title="@string/settings_color_entities">
+				<com.jakewharton.utilities.ColorPreference
+					android:key="@string/settings_color_snake_key"
+					android:title="@string/settings_color_snake"
+					android:summary="@string/settings_color_snake_summary"
+					android:defaultValue="@integer/color_snake_default"/>
+				<com.jakewharton.utilities.ColorPreference
+					android:key="@string/settings_color_apple_key"
+					android:title="@string/settings_color_apple"
+					android:summary="@string/settings_color_apple_summary"
+					android:defaultValue="@integer/color_apple_default"/>
+			</PreferenceCategory>
 			<PreferenceCategory
 				android:key="@string/settings_reset_key"
 				android:title="@string/settings_reset">

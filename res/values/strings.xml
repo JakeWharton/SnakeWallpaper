@@ -104,6 +104,7 @@
     <string name="settings_color_bgimageclear_key">color_game_bgimage_clear</string>
     <string name="settings_color_bgimageclear_toast">Background image cleared.</string>
     <string name="settings_color_bgimageclear_summary"></string>
+    <string name="settings_color_entities">Entities</string>
     <string name="settings_color_snake">Snake</string>
     <string name="settings_color_snake_key">color_snake</string>
     <string name="settings_color_snake_summary"></string>
