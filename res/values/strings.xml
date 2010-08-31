@@ -167,8 +167,8 @@
     <string name="information_contact_website_key">information_contact_website</string>
     <string name="information_contact_website_summary">http://jakewharton.com</string>
     <string name="information_contact_website_data">http://jakewharton.com</string>
-    <string name="information_market">Other Applications</string>
-    <string name="information_market_view">Like This Wallpaper?</string>
+    <string name="information_market">Android Market</string>
+    <string name="information_market_view">View Other Applications</string>
     <string name="information_market_view_key">information_market_view</string>
     <string name="information_market_view_summary">Click here to view my other applications on the Android Market</string>
     <string name="information_market_view_data">market://search?q=pub:%22Jake%20Wharton%22</string>

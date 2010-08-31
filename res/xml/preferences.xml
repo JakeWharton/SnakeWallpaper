@@ -242,13 +242,13 @@
 					android:summary="@string/information_contact_website_summary"
 					app:icon="@drawable/world"/>
 			</PreferenceCategory>
+			<PreferenceCategory
+				android:title="@string/information_market">
+				<Preference
+					android:key="@string/information_market_view_key"
+					android:title="@string/information_market_view"
+					android:summary="@string/information_market_view_summary"/>
+			</PreferenceCategory>
 		</PreferenceScreen>
-	</PreferenceCategory>
-	<PreferenceCategory
-		android:title="@string/information_market">
-		<Preference
-			android:key="@string/information_market_view_key"
-			android:title="@string/information_market_view"
-			android:summary="@string/information_market_view_summary"/>
 	</PreferenceCategory>
 </PreferenceScreen>
