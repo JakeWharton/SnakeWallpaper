@@ -11,6 +11,7 @@ Screenshots
 
 [![Screenshot 1](http://img839.imageshack.us/img839/5899/30409390.th.png)](http://img839.imageshack.us/img839/5899/30409390.png)
 [![Screenshot 2](http://img832.imageshack.us/img832/4858/32267736.th.png)](http://img832.imageshack.us/img832/4858/32267736.png)
+[![Screenshot 3](http://img829.imageshack.us/img829/3279/deviced.th.png)](http://img829.imageshack.us/img829/3279/deviced.png)
 
 
 **Follow me on [Twitter](http://twitter.com/JakeWharton/) for updates.**
