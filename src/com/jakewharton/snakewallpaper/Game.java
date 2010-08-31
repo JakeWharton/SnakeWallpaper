@@ -229,6 +229,11 @@ public class Game implements SharedPreferences.OnSharedPreferenceChangeListener 
      */
     private final Paint mSnakeForeground;
     
+    /**
+     * Whether or not the snake is drawn in a blocky fashion.
+     */
+    private boolean mIsBlocky;
+    
     
     
     /**
@@ -291,6 +296,15 @@ public class Game implements SharedPreferences.OnSharedPreferenceChangeListener 
 			
 			if (Wallpaper.LOG_DEBUG) {
 				Log.d(Game.TAG, "Widget Locations: " + (this.mWidgetLocations.size() / 4));
+			}
+		}
+		
+		final String blocky = resources.getString(R.string.settings_display_isblocky_key);
+		if (all || key.equals(blocky)) {
+			this.mIsBlocky = preferences.getBoolean(blocky, resources.getBoolean(R.bool.display_isblocky_default));
+			
+			if (Wallpaper.LOG_DEBUG) {
+				Log.d(Game.TAG, "Is Blocky: " + this.mIsBlocky);
 			}
 		}
 		
@@ -803,10 +817,10 @@ public class Game implements SharedPreferences.OnSharedPreferenceChangeListener 
     	
     	//draw snake
     	for (final Point position : this.mSnake) {
-    		final float left = (position.x * this.mCellWidth) - 1;
-    		final float top = (position.y * this.mCellHeight) - 1;
-    		final float right = (left + this.mCellWidth) + 1;
-    		final float bottom = (top + this.mCellHeight) + 1;
+    		final float left = (position.x * this.mCellWidth) + (this.mIsBlocky ? 1 : -1);
+    		final float top = (position.y * this.mCellHeight) + (this.mIsBlocky ? 1 : -1);
+    		final float right = (left + this.mCellWidth) + (this.mIsBlocky ? -1 : 1);
+    		final float bottom = (top + this.mCellHeight) + (this.mIsBlocky ? -1 : 1);
     		c.drawRect(left, top, right, bottom, this.mSnakeForeground);
     	}
     	

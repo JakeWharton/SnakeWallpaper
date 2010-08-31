@@ -24,6 +24,11 @@
 				android:defaultValue="@integer/display_fps_default"
 				android:entries="@array/fps"
 				android:entryValues="@array/fps_values"/>
+			<CheckBoxPreference
+				android:key="@string/settings_display_isblocky_key"
+				android:title="@string/settings_display_isblocky"
+				android:summary="@string/settings_display_isblocky_summary"
+				android:defaultValue="@bool/display_isblocky_default"/>
 			<PreferenceCategory
 				android:title="@string/settings_display_layout">
 				<CheckBoxPreference

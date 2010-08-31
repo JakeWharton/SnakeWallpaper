@@ -446,6 +446,8 @@ public class Preferences extends PreferenceActivity implements SharedPreferences
 		editor.putBoolean(resources.getString(R.string.settings_game_usercontrol_key), resources.getBoolean(R.bool.game_usercontrol_default));
 		//fps
 		editor.putInt(resources.getString(R.string.settings_display_fps_key), resources.getInteger(R.integer.display_fps_default));
+		//blocky
+		editor.putBoolean(resources.getString(R.string.settings_display_isblocky_key), resources.getBoolean(R.bool.display_isblocky_default));
 		//show walls
 		editor.putBoolean(resources.getString(R.string.settings_display_showwalls_key), resources.getBoolean(R.bool.display_showwalls_default));
 		//icon rows

@@ -45,6 +45,9 @@
     <string name="settings_display_fps">FPS</string>
     <string name="settings_display_fps_key">display_fps</string>
     <string name="settings_display_fps_summary">Number of times per second to advance the game</string>
+    <string name="settings_display_isblocky">Draw Blocky</string>
+    <string name="settings_display_isblocky_key">display_isblocky</string>
+    <string name="settings_display_isblocky_summary">Draw the snake in separate blocks</string>
     <string name="settings_display_layout">Layout</string>
     <string name="settings_display_showwalls">Show Walls</string>
     <string name="settings_display_showwalls_key">display_showwalls</string>
