@@ -807,7 +807,7 @@ public class Game implements SharedPreferences.OnSharedPreferenceChangeListener 
     		final float top = (position.y * this.mCellHeight) - 1;
     		final float right = (left + this.mCellWidth) + 1;
     		final float bottom = (top + this.mCellHeight) + 1;
-    		c.drawRect(new RectF(left, top, right, bottom), this.mSnakeForeground);
+    		c.drawRect(left, top, right, bottom, this.mSnakeForeground);
     	}
     	
         //draw walls if enabled
@@ -822,14 +822,14 @@ public class Game implements SharedPreferences.OnSharedPreferenceChangeListener 
         			float right = (left + (this.mCellColumnSpacing * this.mCellWidth)) - 3;
         			float bottom = (top + (this.mCellRowSpacing * this.mCellHeight)) - 3;
         			
-        			c.drawRoundRect(new RectF(left, top, right, bottom), 0, 0, this.mWallsForeground);
+        			c.drawRect(left, top, right, bottom, this.mWallsForeground);
         			
         			left += mCellWidthOverEight;
         			top += mCellHeightOverEight;
         			right -= mCellWidthOverEight;
         			bottom -= mCellHeightOverEight;
         			
-        			c.drawRoundRect(new RectF(left, top, right, bottom), 0, 0, this.mWallsForeground);
+        			c.drawRect(left, top, right, bottom, this.mWallsForeground);
         		}
         	}
         }
