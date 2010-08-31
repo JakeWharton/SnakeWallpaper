@@ -60,7 +60,7 @@ public class Game implements SharedPreferences.OnSharedPreferenceChangeListener 
 	/**
 	 * Tag used for logging.
 	 */
-	private static final String TAG = "WakkaWallpaper.Game";
+	private static final String TAG = "SnakeWallpaper.Game";
 	
 	/**
 	 * Length of the initial snake.

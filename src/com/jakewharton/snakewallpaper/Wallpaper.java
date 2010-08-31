@@ -108,7 +108,7 @@ public class Wallpaper extends WallpaperService {
     	/**
     	 * Tag used for logging.
     	 */
-    	private static final String TAG = "WakkaWallpaper.WakkaEngine";
+    	private static final String TAG = "SnakeWallpaper.SnakeEngine";
     	
     	/**
     	 * Number of millisecond in a second.
