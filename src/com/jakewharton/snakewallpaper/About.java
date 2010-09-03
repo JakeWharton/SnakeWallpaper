@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import android.app.Activity;
+import android.net.Uri;
 import android.os.Bundle;
 import android.webkit.WebView;
 
@@ -41,7 +42,7 @@ public class About extends Activity {
 	/**
 	 * Character set of the assets.
 	 */
-	private static final String ENCODING = "utf8";
+	private static final String ENCODING = "utf-8";
 	
 	
 	
@@ -68,7 +69,7 @@ public class About extends Activity {
 		
 		//Put text into layout
         final WebView view = new WebView(this);
-		view.loadData(content.toString(), About.MIME_TYPE, About.ENCODING);
+		view.loadData(Uri.encode(content.toString()), About.MIME_TYPE, About.ENCODING);
 		
 		this.setContentView(view);
     }
