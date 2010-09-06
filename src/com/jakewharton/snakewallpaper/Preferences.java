@@ -443,31 +443,31 @@ public class Preferences extends PreferenceActivity implements SharedPreferences
 	    final SharedPreferences.Editor editor = Preferences.this.getPreferenceManager().getSharedPreferences().edit();
 
 		//user controllable
-		editor.putBoolean(resources.getString(R.string.settings_game_usercontrol_key), resources.getBoolean(R.bool.game_usercontrol_default));
+		editor.remove(resources.getString(R.string.settings_game_usercontrol_key));
 		//fps
-		editor.putInt(resources.getString(R.string.settings_display_fps_key), resources.getInteger(R.integer.display_fps_default));
+		editor.remove(resources.getString(R.string.settings_display_fps_key));
 		//blocky
-		editor.putBoolean(resources.getString(R.string.settings_display_isblocky_key), resources.getBoolean(R.bool.display_isblocky_default));
+		editor.remove(resources.getString(R.string.settings_display_isblocky_key));
 		//show walls
-		editor.putBoolean(resources.getString(R.string.settings_display_showwalls_key), resources.getBoolean(R.bool.display_showwalls_default));
+		editor.remove(resources.getString(R.string.settings_display_showwalls_key));
 		//icon rows
-		editor.putInt(resources.getString(R.string.settings_display_iconrows_key), resources.getInteger(R.integer.display_iconrows_default));
+		editor.remove(resources.getString(R.string.settings_display_iconrows_key));
 		//icon cols
-		editor.putInt(resources.getString(R.string.settings_display_iconcols_key), resources.getInteger(R.integer.display_iconcols_default));
+		editor.remove(resources.getString(R.string.settings_display_iconcols_key));
 		//icon row spacing
-		editor.putInt(resources.getString(R.string.settings_display_rowspacing_key), resources.getInteger(R.integer.display_rowspacing_default));
+		editor.remove(resources.getString(R.string.settings_display_rowspacing_key));
 		//icon col spacing
-		editor.putInt(resources.getString(R.string.settings_display_colspacing_key), resources.getInteger(R.integer.display_colspacing_default));
+		editor.remove(resources.getString(R.string.settings_display_colspacing_key));
 		//widget locations
-		editor.putString(resources.getString(R.string.settings_display_widgetlocations_key), resources.getString(R.string.display_widgetlocations_default));
+		editor.remove(resources.getString(R.string.settings_display_widgetlocations_key));
 		//padding top
-		editor.putInt(resources.getString(R.string.settings_display_padding_top_key), resources.getInteger(R.integer.display_padding_top_default));
+		editor.remove(resources.getString(R.string.settings_display_padding_top_key));
 		//padding bottom
-		editor.putInt(resources.getString(R.string.settings_display_padding_bottom_key), resources.getInteger(R.integer.display_padding_bottom_default));
+		editor.remove(resources.getString(R.string.settings_display_padding_bottom_key));
 		//padding left
-		editor.putInt(resources.getString(R.string.settings_display_padding_left_key), resources.getInteger(R.integer.display_padding_left_default));
+		editor.remove(resources.getString(R.string.settings_display_padding_left_key));
 		//padding right
-		editor.putInt(resources.getString(R.string.settings_display_padding_right_key), resources.getInteger(R.integer.display_padding_right_default));
+		editor.remove(resources.getString(R.string.settings_display_padding_right_key));
 	
 		editor.commit();
     }
@@ -480,17 +480,17 @@ public class Preferences extends PreferenceActivity implements SharedPreferences
 		final SharedPreferences.Editor editor = Preferences.this.getPreferenceManager().getSharedPreferences().edit();
 
 		//background
-		editor.putInt(resources.getString(R.string.settings_color_background_key), resources.getInteger(R.integer.color_background_default));
+		editor.remove(resources.getString(R.string.settings_color_background_key));
 		//walls
-		editor.putInt(resources.getString(R.string.settings_color_walls_key), resources.getInteger(R.integer.color_walls_default));
+		editor.remove(resources.getString(R.string.settings_color_walls_key));
 		//background image
-		editor.putString(resources.getString(R.string.settings_color_bgimage_key), null);
+		editor.remove(resources.getString(R.string.settings_color_bgimage_key));
 		//background opacity
-		editor.putInt(resources.getString(R.string.settings_color_bgopacity_key), resources.getInteger(R.integer.color_bgopacity_default));
+		editor.remove(resources.getString(R.string.settings_color_bgopacity_key));
 		//snake
-		editor.putInt(resources.getString(R.string.settings_color_snake_key), resources.getInteger(R.integer.color_snake_default));
+		editor.remove(resources.getString(R.string.settings_color_snake_key));
 		//apple
-		editor.putInt(resources.getString(R.string.settings_color_apple_key), resources.getInteger(R.integer.color_apple_default));
+		editor.remove(resources.getString(R.string.settings_color_apple_key));
 		
 		editor.commit();
     }
