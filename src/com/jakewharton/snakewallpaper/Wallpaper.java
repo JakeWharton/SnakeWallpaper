@@ -39,7 +39,12 @@ public class Wallpaper extends WallpaperService {
 	/**
 	 * Whether or not the wallpaper should automatically advance to the next frame.
 	 */
-    private static final boolean AUTO_FPS = true;
+    /*package*/ static final boolean AUTO_FPS = true;
+
+    /**
+     * Whether or not to allow playback (and debugging!) in the Picker activity.
+     */
+	/*package*/static final boolean PLAY_DEBUG = false;
     
     /**
      * Height (in DIP) of the status bar. Usually.
@@ -50,6 +55,16 @@ public class Wallpaper extends WallpaperService {
      * Height (in DIP) of the app drawer on the launcher.
      */
     private static final int APP_DRAWER_HEIGHT = 50;
+	
+	/**
+	 * Number of millisecond in a second.
+	 */
+	/*package*/static final int MILLISECONDS_IN_SECOND = 1000;
+	
+	/**
+	 * Maximum time between taps that will reset the game.
+	 */
+	/*package*/static final long RESET_THRESHOLD = 100;
     
     
     
@@ -109,16 +124,6 @@ public class Wallpaper extends WallpaperService {
     	 * Tag used for logging.
     	 */
     	private static final String TAG = "SnakeWallpaper.SnakeEngine";
-    	
-    	/**
-    	 * Number of millisecond in a second.
-    	 */
-    	private static final int MILLISECONDS_IN_SECOND = 1000;
-    	
-    	/**
-    	 * Maximum time between taps that will reset the game.
-    	 */
-    	private static final long RESET_THRESHOLD = 100;
     	
     	
     	
@@ -264,7 +269,7 @@ public class Wallpaper extends WallpaperService {
         public void onTouchEvent(final MotionEvent event) {
         	if (event.getAction() == MotionEvent.ACTION_DOWN) {
         		final long touch = System.currentTimeMillis();
-        		if (touch - this.mLastTouch < SnakeEngine.RESET_THRESHOLD) {
+        		if (touch - this.mLastTouch < Wallpaper.RESET_THRESHOLD) {
         			this.mGame.newGame();
         			this.mLastTouch = 0;
         		} else if (this.mIsControllable) {
@@ -339,7 +344,7 @@ public class Wallpaper extends WallpaperService {
 
         	if (Wallpaper.AUTO_FPS) {
         		if (this.mIsVisible) {
-            		Wallpaper.this.mHandler.postDelayed(this.mDrawWakka, SnakeEngine.MILLISECONDS_IN_SECOND / this.mFPS);
+            		Wallpaper.this.mHandler.postDelayed(this.mDrawWakka, Wallpaper.MILLISECONDS_IN_SECOND / this.mFPS);
             	}
             }
         }
