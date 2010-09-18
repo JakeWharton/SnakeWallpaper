@@ -732,21 +732,13 @@ public class Game implements SharedPreferences.OnSharedPreferenceChangeListener 
 			}
     	}
     	
-    	if (screenWidth > screenHeight) {
-    		this.mIsLandscape = true;
-    		final int temp = screenHeight;
-    		screenHeight = screenWidth;
-    		screenWidth = temp;
-    	} else {
-    		this.mIsLandscape = false;
-    	}
-    	
+    	this.mIsLandscape = (screenWidth > screenHeight);
     	this.mScreenWidth = screenWidth;
     	this.mScreenHeight = screenHeight;
     	
     	if (this.mIsLandscape) {
-    		this.mCellWidth = (screenWidth - this.mDotGridPaddingTop) / (this.mCellsWide * 1.0f);
-    		this.mCellHeight = (screenHeight - (this.mDotGridPaddingBottom + this.mDotGridPaddingLeft + this.mDotGridPaddingRight)) / (this.mCellsTall * 1.0f);
+    		this.mCellWidth = (screenWidth - (this.mDotGridPaddingLeft + this.mDotGridPaddingRight + this.mDotGridPaddingBottom)) / (this.mCellsWide * 1.0f);
+    		this.mCellHeight = (screenHeight - this.mDotGridPaddingTop) / (this.mCellsTall * 1.0f);
     	} else {
     		this.mCellWidth = (screenWidth - (this.mDotGridPaddingLeft + this.mDotGridPaddingRight)) / (this.mCellsWide * 1.0f);
     		this.mCellHeight = (screenHeight - (this.mDotGridPaddingTop + this.mDotGridPaddingBottom)) / (this.mCellsTall * 1.0f);
@@ -784,21 +776,10 @@ public class Game implements SharedPreferences.OnSharedPreferenceChangeListener 
     		c.drawBitmap(this.mBackground, 0, 0, this.mBackgroundPaint);
     	}
         
-        if (this.mIsLandscape) {
-        	//Perform counter-clockwise rotation
-        	c.rotate(-90, this.mScreenWidth / 2.0f, this.mScreenWidth / 2.0f);
-        	c.translate(0, this.mDotGridPaddingLeft);
-        } else {
-        	c.translate(this.mDotGridPaddingLeft, this.mDotGridPaddingTop);
-        }
+        c.translate(this.mDotGridPaddingLeft, this.mDotGridPaddingTop);
         
         //Draw dots and walls
         this.drawGameBoard(c);
-
-        if (this.mIsLandscape) {
-        	//Perform clockwise rotation back to normal
-        	c.rotate(90, this.mScreenWidth / 2.0f, this.mScreenWidth / 2.0f);
-        }
         
         c.restore();
     }
