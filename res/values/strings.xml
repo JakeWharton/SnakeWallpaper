@@ -4,7 +4,7 @@
     <string name="title">Snake Wallpaper</string>
     <string name="author">Jake Wharton</string>
     <string name="description">Play the classic apple-eating game of snake around your icons.</string>
-    <string name="version_name">1.0.2</string>
+    <string name="version_name">1.0.3</string>
     <string name="version_code_key">version</string>
     
     <string name="welcome_firstrun">Thanks for installing!\n\nWould you like to read the instructions?</string>
