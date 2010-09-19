@@ -234,6 +234,11 @@ public class Game implements SharedPreferences.OnSharedPreferenceChangeListener 
      */
     private boolean mIsBlocky;
     
+    /**
+     * Precalculated wall rectangles for drawing
+     */
+    private final List<RectF> mWalls;
+    
     
     
     /**
@@ -254,6 +259,7 @@ public class Game implements SharedPreferences.OnSharedPreferenceChangeListener 
         
         this.mCellSize = new RectF(0, 0, 0, 0);
         this.mSnake = new LinkedList<Point>();
+        this.mWalls = new LinkedList<RectF>();
         
         //Load all preferences or their defaults
         Wallpaper.PREFERENCES.registerOnSharedPreferenceChangeListener(this);
@@ -748,6 +754,58 @@ public class Game implements SharedPreferences.OnSharedPreferenceChangeListener 
     	this.mCellSize.right = this.mCellWidth;
     	this.mCellSize.bottom = this.mCellHeight;
     	
+    	//Calculate walls
+    	this.mWalls.clear();
+    	final float cellWidthOverEight = this.mCellWidth / 8.0f;
+    	final float cellHeightOverEight = this.mCellHeight / 8.0f;
+		
+    	//Widget walls
+    	for (final Rect widget : this.mWidgetLocations) {
+			float left = (((widget.left * (this.mCellColumnSpacing + 1)) + 1) * this.mCellWidth) + 1;
+			float top = (((widget.top * (this.mCellRowSpacing + 1)) + 1) * this.mCellHeight) + 1;
+    		float right = (((widget.right * (this.mCellColumnSpacing + 1)) + this.mCellColumnSpacing + 1) * this.mCellWidth) - 3;
+    		float bottom = (((widget.bottom * (this.mCellRowSpacing + 1)) + this.mCellRowSpacing + 1) * this.mCellHeight) - 3;
+			
+			this.mWalls.add(new RectF(left, top, right, bottom));
+			
+			left += cellWidthOverEight;
+			top += cellHeightOverEight;
+			right -= cellWidthOverEight;
+			bottom -= cellHeightOverEight;
+
+			this.mWalls.add(new RectF(left, top, right, bottom));
+    	}
+		
+    	//Icon walls
+    	for (int y = 0; y < this.mIconRows; y++) {
+    		for (int x = 0; x < this.mIconCols; x++) {
+    			boolean contained = false;
+    			for (final Rect widget : this.mWidgetLocations) {
+    				if (x >= widget.left && x <= widget.right && y >= widget.top && y <= widget.bottom) {
+    					contained = true;
+    					break;
+    				}
+    			}
+    			if (contained) {
+    				continue;
+    			}
+    			
+    			float left = (((x * (this.mCellColumnSpacing + 1)) + 1) * this.mCellWidth) + 1;
+    			float top = (((y * (this.mCellRowSpacing + 1)) + 1) * this.mCellHeight) + 1;
+    			float right = (left + (this.mCellColumnSpacing * this.mCellWidth)) - 3;
+    			float bottom = (top + (this.mCellRowSpacing * this.mCellHeight)) - 3;
+
+    			this.mWalls.add(new RectF(left, top, right, bottom));
+    			
+    			left += cellWidthOverEight;
+    			top += cellHeightOverEight;
+    			right -= cellWidthOverEight;
+    			bottom -= cellHeightOverEight;
+
+    			this.mWalls.add(new RectF(left, top, right, bottom));
+    		}
+    	}
+    	
     	if (Wallpaper.LOG_DEBUG) {
     		Log.d(Game.TAG, "Is Landscape: " + this.mIsLandscape);
     		Log.d(Game.TAG, "Screen Width: " + screenWidth);
@@ -807,25 +865,8 @@ public class Game implements SharedPreferences.OnSharedPreferenceChangeListener 
     	
         //draw walls if enabled
         if (this.mIsDisplayingWalls) {
-			final float mCellWidthOverEight = this.mCellWidth / 8.0f;
-			final float mCellHeightOverEight = this.mCellHeight / 8.0f;
-			
-        	for (int y = 0; y < this.mIconRows; y++) {
-        		for (int x = 0; x < this.mIconCols; x++) {
-        			float left = (((x * (this.mCellColumnSpacing + 1)) + 1) * this.mCellWidth) + 1;
-        			float top = (((y * (this.mCellRowSpacing + 1)) + 1) * this.mCellHeight) + 1;
-        			float right = (left + (this.mCellColumnSpacing * this.mCellWidth)) - 3;
-        			float bottom = (top + (this.mCellRowSpacing * this.mCellHeight)) - 3;
-        			
-        			c.drawRect(left, top, right, bottom, this.mWallsForeground);
-        			
-        			left += mCellWidthOverEight;
-        			top += mCellHeightOverEight;
-        			right -= mCellWidthOverEight;
-        			bottom -= mCellHeightOverEight;
-        			
-        			c.drawRect(left, top, right, bottom, this.mWallsForeground);
-        		}
+        	for (final RectF wall : this.mWalls) {
+        		c.drawRect(wall, this.mWallsForeground);
         	}
         }
     }
