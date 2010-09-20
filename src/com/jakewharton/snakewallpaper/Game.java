@@ -99,15 +99,9 @@ public class Game implements SharedPreferences.OnSharedPreferenceChangeListener 
 	 */
 	private int mCellRowSpacing;
 	
-	/**
-	 * Width (in pixels) of a single cell.
-	 */
-	private float mCellWidth;
+	private float mScaleX;
 	
-	/**
-	 * Height (in pixels) of a single cell.
-	 */
-	private float mCellHeight;
+	private float mScaleY;
 	
 	/**
 	 * Height (in pixels) of the screen.
@@ -173,11 +167,6 @@ public class Game implements SharedPreferences.OnSharedPreferenceChangeListener 
      * The user background image (if any).
      */
     private Bitmap mBackground;
-    
-    /**
-     * The size (in pixels) of a single cell.
-     */
-    private final RectF mCellSize;
     
     /**
      * The locations of widgets on the launcher.
@@ -252,12 +241,10 @@ public class Game implements SharedPreferences.OnSharedPreferenceChangeListener 
         //Create Paints
     	this.mWallsForeground = new Paint(Paint.ANTI_ALIAS_FLAG);
     	this.mWallsForeground.setStyle(Paint.Style.STROKE);
-    	this.mWallsForeground.setStrokeWidth(2);
         this.mBackgroundPaint = new Paint();
         this.mAppleForeground = new Paint(Paint.ANTI_ALIAS_FLAG);
-        this.mSnakeForeground = new Paint(Paint.ANTI_ALIAS_FLAG);
+        this.mSnakeForeground = new Paint();
         
-        this.mCellSize = new RectF(0, 0, 0, 0);
         this.mSnake = new LinkedList<Point>();
         this.mWalls = new LinkedList<RectF>();
         
@@ -743,35 +730,30 @@ public class Game implements SharedPreferences.OnSharedPreferenceChangeListener 
     	this.mScreenHeight = screenHeight;
     	
     	if (this.mIsLandscape) {
-    		this.mCellWidth = (screenWidth - (this.mDotGridPaddingLeft + this.mDotGridPaddingRight + this.mDotGridPaddingBottom)) / (this.mCellsWide * 1.0f);
-    		this.mCellHeight = (screenHeight - this.mDotGridPaddingTop) / (this.mCellsTall * 1.0f);
+    		this.mScaleX = (screenWidth - (this.mDotGridPaddingLeft + this.mDotGridPaddingRight + this.mDotGridPaddingBottom)) / (this.mCellsWide * 1.0f);
+    		this.mScaleY = (screenHeight - this.mDotGridPaddingTop) / (this.mCellsTall * 1.0f);
     	} else {
-    		this.mCellWidth = (screenWidth - (this.mDotGridPaddingLeft + this.mDotGridPaddingRight)) / (this.mCellsWide * 1.0f);
-    		this.mCellHeight = (screenHeight - (this.mDotGridPaddingTop + this.mDotGridPaddingBottom)) / (this.mCellsTall * 1.0f);
+    		this.mScaleX = (screenWidth - (this.mDotGridPaddingLeft + this.mDotGridPaddingRight)) / (this.mCellsWide * 1.0f);
+    		this.mScaleY = (screenHeight - (this.mDotGridPaddingTop + this.mDotGridPaddingBottom)) / (this.mCellsTall * 1.0f);
     	}
-    	
-    	//Update cell size
-    	this.mCellSize.right = this.mCellWidth;
-    	this.mCellSize.bottom = this.mCellHeight;
     	
     	//Calculate walls
     	this.mWalls.clear();
-    	final float cellWidthOverEight = this.mCellWidth / 8.0f;
-    	final float cellHeightOverEight = this.mCellHeight / 8.0f;
+    	final float cellOverEight = 1 / 8.0f;
 		
     	//Widget walls
     	for (final Rect widget : this.mWidgetLocations) {
-			float left = (((widget.left * (this.mCellColumnSpacing + 1)) + 1) * this.mCellWidth) + 1;
-			float top = (((widget.top * (this.mCellRowSpacing + 1)) + 1) * this.mCellHeight) + 1;
-    		float right = (((widget.right * (this.mCellColumnSpacing + 1)) + this.mCellColumnSpacing + 1) * this.mCellWidth) - 3;
-    		float bottom = (((widget.bottom * (this.mCellRowSpacing + 1)) + this.mCellRowSpacing + 1) * this.mCellHeight) - 3;
+			float left = (widget.left * (this.mCellColumnSpacing + 1)) + 1;
+			float top = (widget.top * (this.mCellRowSpacing + 1)) + 1;
+    		float right = ((widget.right * (this.mCellColumnSpacing + 1)) + this.mCellColumnSpacing + 1);
+    		float bottom = ((widget.bottom * (this.mCellRowSpacing + 1)) + this.mCellRowSpacing + 1);
 			
 			this.mWalls.add(new RectF(left, top, right, bottom));
 			
-			left += cellWidthOverEight;
-			top += cellHeightOverEight;
-			right -= cellWidthOverEight;
-			bottom -= cellHeightOverEight;
+			left += cellOverEight;
+			top += cellOverEight;
+			right -= cellOverEight;
+			bottom -= cellOverEight;
 
 			this.mWalls.add(new RectF(left, top, right, bottom));
     	}
@@ -790,17 +772,17 @@ public class Game implements SharedPreferences.OnSharedPreferenceChangeListener 
     				continue;
     			}
     			
-    			float left = (((x * (this.mCellColumnSpacing + 1)) + 1) * this.mCellWidth) + 1;
-    			float top = (((y * (this.mCellRowSpacing + 1)) + 1) * this.mCellHeight) + 1;
-    			float right = (left + (this.mCellColumnSpacing * this.mCellWidth)) - 3;
-    			float bottom = (top + (this.mCellRowSpacing * this.mCellHeight)) - 3;
+    			float left = (x * (this.mCellColumnSpacing + 1)) + 1;
+    			float top = (y * (this.mCellRowSpacing + 1)) + 1;
+    			float right = left + this.mCellColumnSpacing;
+    			float bottom = top + this.mCellRowSpacing;
 
     			this.mWalls.add(new RectF(left, top, right, bottom));
     			
-    			left += cellWidthOverEight;
-    			top += cellHeightOverEight;
-    			right -= cellWidthOverEight;
-    			bottom -= cellHeightOverEight;
+    			left += cellOverEight;
+    			top += cellOverEight;
+    			right -= cellOverEight;
+    			bottom -= cellOverEight;
 
     			this.mWalls.add(new RectF(left, top, right, bottom));
     		}
@@ -810,8 +792,8 @@ public class Game implements SharedPreferences.OnSharedPreferenceChangeListener 
     		Log.d(Game.TAG, "Is Landscape: " + this.mIsLandscape);
     		Log.d(Game.TAG, "Screen Width: " + screenWidth);
     		Log.d(Game.TAG, "Screen Height: " + screenHeight);
-    		Log.d(Game.TAG, "Cell Width: " + this.mCellWidth);
-    		Log.d(Game.TAG, "Cell Height: " + this.mCellHeight);
+    		Log.d(Game.TAG, "Scale X: " + this.mScaleX);
+    		Log.d(Game.TAG, "Scale Y: " + this.mScaleY);
     	}
 
     	if (Wallpaper.LOG_VERBOSE) {
@@ -835,6 +817,7 @@ public class Game implements SharedPreferences.OnSharedPreferenceChangeListener 
     	}
         
         c.translate(this.mDotGridPaddingLeft, this.mDotGridPaddingTop);
+        c.scale(this.mScaleX, this.mScaleY);
         
         //Draw dots and walls
         this.drawGameBoard(c);
@@ -849,17 +832,14 @@ public class Game implements SharedPreferences.OnSharedPreferenceChangeListener 
      */
     private void drawGameBoard(final Canvas c) {
     	//draw apple
-    	final float cx = (this.mApple.x * this.mCellWidth) + (this.mCellWidth / 2.0f);
-    	final float cy = (this.mApple.y * this.mCellHeight) + (this.mCellHeight / 2.0f);
-    	final float radius = ((this.mCellWidth > this.mCellHeight) ? this.mCellHeight : this.mCellWidth) / 3.0f;
-    	c.drawCircle(cx, cy, radius, this.mAppleForeground);
+    	c.drawCircle(this.mApple.x + 0.5f, this.mApple.y + 0.5f, 0.333f, this.mAppleForeground);
     	
     	//draw snake
     	for (final Point position : this.mSnake) {
-    		final float left = (position.x * this.mCellWidth) + (this.mIsBlocky ? 1 : -1);
-    		final float top = (position.y * this.mCellHeight) + (this.mIsBlocky ? 1 : -1);
-    		final float right = (left + this.mCellWidth) + (this.mIsBlocky ? -1 : 1);
-    		final float bottom = (top + this.mCellHeight) + (this.mIsBlocky ? -1 : 1);
+    		final float left = position.x + (this.mIsBlocky ? 0.1f : 0);
+    		final float top = position.y + (this.mIsBlocky ? 0.1f : 0);
+    		final float right = left + 1 + (this.mIsBlocky ? -0.1f : 0);
+    		final float bottom = top + 1 + (this.mIsBlocky ? -0.1f : 0);
     		c.drawRect(left, top, right, bottom, this.mSnakeForeground);
     	}
     	
