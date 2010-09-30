@@ -522,9 +522,9 @@ public class Game implements SharedPreferences.OnSharedPreferenceChangeListener 
     			}
     		}
     	}
-    	
-    	this.newLife();
+
     	this.newApple();
+    	this.newLife();
     	
     	if (Wallpaper.LOG_VERBOSE) {
     		Log.v(Game.TAG, "< newGame()");
@@ -535,14 +535,34 @@ public class Game implements SharedPreferences.OnSharedPreferenceChangeListener 
      * Reset snake.
      */
     private void newLife() {
-    	//Create snake
+    	//Clear snake
     	this.mSnake.clear();
-    	final int initialX = (this.mCellsWide / 2) - (Game.INITIAL_LENGTH / 2);
-    	final int initialY = ((this.mIconRows / 2) * (this.mCellRowSpacing + 1));
-    	for (int i = 0; i < Game.INITIAL_LENGTH; i++) {
-    		this.mSnake.add(new Point(initialX + i, initialY));
-    	}
     	
+    	boolean done = true;
+    	do {
+	    	//Create snake tail
+	    	Point last = this.getRandomValidPosition(true);
+	    	this.mSnake.add(last);
+	    	
+	    	//Work our way forward to the head
+	    	for (int i = 1; i < Game.INITIAL_LENGTH; i++) {
+	    		//Direction toward apple
+	    		this.determineNextDirection();
+	    		last = Game.move(last, this.mDirection);
+	    		
+	    		if (Game.pointEquals(last, this.mApple)) {
+	    			//We hit the apple, start over
+	    			done = false;
+	    			break;
+	    		} else {
+	    			//Add to head
+	    			this.mSnake.add(0, last);
+	    		}
+	    	}
+    	}
+    	while (!done);
+    	
+    	//Make sure we get a new direction next tick
     	this.mWantsToGo = null;
     }
     
@@ -550,18 +570,31 @@ public class Game implements SharedPreferences.OnSharedPreferenceChangeListener 
      * Get a new apple location.
      */
     private void newApple() {
+    	this.mApple = this.getRandomValidPosition(false);
+    }
+    
+    /**
+     * Get a random valid location on the game board.
+     * 
+     * @return Point.
+     */
+    private Point getRandomValidPosition(boolean checkApple) {
+    	Point p;
     	while (true) {
-    		this.mApple = new Point(Game.RANDOM.nextInt(this.mCellsWide), Game.RANDOM.nextInt(this.mCellsTall));
-    		if (this.isValidPosition(this.mApple)) {
-    			boolean snakeCollision = false;
+    		p = new Point(Game.RANDOM.nextInt(this.mCellsWide), Game.RANDOM.nextInt(this.mCellsTall));
+    		if (this.isValidPosition(p)) {
+    			boolean entityValid = true;
     			for (final Point test : this.mSnake) {
-    				if (Game.pointEquals(test, this.mApple)) {
-    					snakeCollision = true;
+    				if (Game.pointEquals(test, p)) {
+    					entityValid = false;
     					break;
     				}
     			}
-    			if (!snakeCollision) {
-    				return;
+    			if (checkApple && entityValid && Game.pointEquals(this.mApple, p)) {
+    				entityValid = false;
+    			}
+    			if (entityValid) {
+    				return p;
     			}
     		}
     	}
