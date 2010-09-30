@@ -532,7 +532,7 @@ public class Game implements SharedPreferences.OnSharedPreferenceChangeListener 
     }
     
     /**
-     * Reset snake.
+     * Position snake a random valid location.
      */
     private void newLife() {
     	//Clear snake
